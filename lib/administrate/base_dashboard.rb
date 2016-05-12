@@ -49,7 +49,11 @@ module Administrate
     end
 
     def display_resource(resource)
-      "#{resource.class} ##{resource.id}"
+      if resource.class.instance_methods(false).include? :to_s
+        resource.to_s
+      else
+        "#{resource.class} ##{resource.id}"
+      end
     end
 
     private
